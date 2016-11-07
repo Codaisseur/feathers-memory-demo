@@ -46,6 +46,7 @@ class UserForm extends Component {
       this.setState({
         passwordError: false
       })
+
       return
     }
 
