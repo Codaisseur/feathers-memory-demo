@@ -1,13 +1,26 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 class Home extends Component {
   render() {
+    const { userName } = this.props
+
     return(
       <div className="home">
-        <h1>Welcome, Stranger!</h1>
+        <h1>Welcome, { userName || 'Stranger' }!</h1>
       </div>
     )
   }
 }
 
-export default Home
+Home.propTypes = {
+  userName: PropTypes.string,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    userName: state.currentUser.name,
+  }
+}
+
+export default connect(mapStateToProps)(Home)

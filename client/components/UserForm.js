@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -28,10 +29,9 @@ class UserForm extends Component {
     console.log('passwordConfirmation: ', (passwordConfirmation && passwordConfirmation.getValue()))
 
     const formData = {
-      name,
-      email,
-      password,
-      passwordConfirmation,
+      name: name && name.getValue(),
+      email: email.getValue(),
+      password: password.getValue()
     }
 
     this.props.onSubmit(formData)
@@ -56,7 +56,7 @@ class UserForm extends Component {
   }
 
   render() {
-    const { signUp } = this.props
+    const { signUp, errors } = this.props
 
     return (
       <Paper className="user-form" zDepth={3}>
@@ -81,6 +81,7 @@ class UserForm extends Component {
               hintText="Email"
               floatingLabelText="Email"
               type="email"
+              errorText={ errors.email }
             />
           </div>
 
@@ -120,6 +121,11 @@ class UserForm extends Component {
 UserForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   signUp: PropTypes.bool,
+  errors: PropTypes.object.isRequired,
 }
 
-export default UserForm
+const mapStateToProps = (state) => {
+  return { errors: state.formErrors }
+}
+
+export default connect(mapStateToProps)(UserForm)
