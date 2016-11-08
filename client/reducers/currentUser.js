@@ -8,6 +8,7 @@ export default (state = JSON.parse(localStorage.getItem('mg.currentUser')) || {}
       return payload
 
     case SIGN_OUT_USER :
+      localStorage.removeItem('mg.currentUser')
       return {}
 
     default :

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { history } from '../store'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -53,6 +54,12 @@ class UserForm extends Component {
     this.setState({
       passwordError: true
     })
+  }
+
+  switchMode() {
+    const { signUp } = this.props
+    const location = signUp ? '/sign-in' : '/sign-up'
+    history.push(location)
   }
 
   render() {
@@ -110,7 +117,7 @@ class UserForm extends Component {
 
           <div className="controls">
             <RaisedButton style={{ float: 'right' }} type="submit" disabled={ this.state.passwordError } label={ signUp ? 'Sign Up' : 'Sign In' } primary={true}  />
-            <FlatButton label={ signUp ? 'Sign In' : 'Sign Up' } href={ signUp ? '/sign-in' : '/sign-up' } />
+            <FlatButton label={ signUp ? 'Sign In' : 'Sign Up' } onClick={ this.switchMode.bind(this) } />
           </div>
         </form>
       </Paper>
