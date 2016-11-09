@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton'
 import Toggle from 'material-ui/Toggle'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
+import ActionHome from 'material-ui/svg-icons/action/home';
 import signOutUser from '../actions/sign-out-user'
 
 class Header extends Component {
@@ -42,11 +43,16 @@ class Header extends Component {
     history.push('/sign-up')
   }
 
+  navigateHome() {
+    history.push('/')
+  }
+
   render() {
     return (
 
       <AppBar
         title="MemoryGame"
+        iconElementLeft={ <IconButton onClick={ this.navigateHome }><ActionHome /></IconButton> }
         iconElementRight={ this.renderMenu() }
       />
     )
