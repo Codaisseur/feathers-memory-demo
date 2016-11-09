@@ -30,7 +30,6 @@ class GameModel extends BaseModel {
       type: 'local',
       storage: window.localStorage,
     }))
-    this.app.authenticate()
   }
 }
 

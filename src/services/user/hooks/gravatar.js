@@ -14,7 +14,7 @@ const gravatarUrl = 'https://s.gravatar.com/avatar';
 const query = `s=60`;
 
 // Returns a full URL to a Gravatar image for a given email address
-const gravatarImage = email => {
+const gravatarImage = (email) => {
   // Gravatar uses MD5 hashes from an email address to get the image
   const hash = crypto.createHash('md5').update(email).digest('hex');
 

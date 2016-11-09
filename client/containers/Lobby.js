@@ -15,11 +15,11 @@ class Lobby extends Component {
     return (
       <div className="lobby">
         <RaisedButton label="Create Game" primary={ true } onClick={ createGame } />
-        <ul>
+        <ol>
           { games.map((game) => {
-            return <li>Game by: {game.createdBy && game.createdBy.name} ({game.createdAt})</li>
+            return <li key={ game._id }>{ game._id } Game by: {game.createdBy && game.createdBy.name} ({game.createdAt})</li>
           })}
-        </ul>
+        </ol>
       </div>
     )
   }
