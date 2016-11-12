@@ -2,7 +2,7 @@
   "host": "MemoryGame-app.feathersjs.com",
   "port": 5000,
   "mongodb": "MONGODB_URL",
-  "public": "../dist/",
+  "public": "../static/",
   "auth": {
     "token": {
       "secret": "FEATHERS_AUTH_SECRET"
